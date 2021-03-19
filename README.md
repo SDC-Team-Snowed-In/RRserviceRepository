@@ -11,5 +11,10 @@ basic commands in postgres
 load schema from outside postgres
 psql postgres -f '/Users/nickpapadakis/Desktop/SDC/RRserviceRepository/schema.sql';
 
+
+SET session_replication_role = 'replica';
+
+SET session_replication_role = 'origin';
+
 load data from csv file
 \copy [tablename] from '/Users/nickpapadakis/Desktop/SDC/rr-data/reviews_photos.csv' (absolute path, just drag schema file into terminal) DELIMITER ',' CSV HEADER ENCODING 'UTF8';

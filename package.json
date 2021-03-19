@@ -4,6 +4,7 @@
   "description": "back-end for team blizzard RR module",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,11 @@
   "homepage": "https://github.com/SDC-Team-Snowed-In/RRserviceRepository#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "koa": "^2.13.1",
+    "koa-cors": "^0.0.16",
+    "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
+    "nodemon": "^2.0.7",
     "pg": "^8.5.1",
     "postgres": "^1.0.2"
   }

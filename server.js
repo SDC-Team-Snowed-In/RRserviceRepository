@@ -1,27 +1,38 @@
-const app = require('express');
-const PORT = 3004;
+const Koa = require('koa');
+const Router = require("koa-router");
+const serve = require('koa-static');
+const cors = require('koa-cors');
+const database = require('./db.js');
 
-app.get('/reviews' (err, results) => {
-  // db.getReviews
+const server = new Koa();
+const router = new Router();
+
+//  handle the demon that is CORS
+server.use(cors());
+
+//  error-handling middleware
+server.use(async (context, next) => {
+  try {
+    await next();
+  } catch (error) {
+    console.log(error);
+    context.status = 500;
+    context.body = error;
+  }
 });
 
-app.get('/reviews/meta', (err, results) => {
-  //sjdsjdusdu
-}
-
-app.post('/reviews', (err, results) => {
-
+// specify route(s)
+router.get("/reviews", async (context, next) => {
+  const photos = await database.getPhotos(5);
+  context.status = 200;
+  context.body = photos;
+  await next();
 });
 
-app.put('/reviews/:review_id/helpful', (err, results) => {
+// mount the router to our web application
+server.use(router.routes());
+server.use(router.allowedMethods());
+database.pool.connect();
 
-});
-
-app.put('/reviews/:review_id/report', (err, results) => {
-
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is now listening on port ${PORT}`);
-});
-
+// launch the server
+server.listen(3005);

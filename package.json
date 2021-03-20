@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/SDC-Team-Snowed-In/RRserviceRepository#readme",
   "dependencies": {
-    "express": "^4.17.1",
     "koa": "^2.13.1",
     "koa-cors": "^0.0.16",
     "koa-router": "^10.0.0",

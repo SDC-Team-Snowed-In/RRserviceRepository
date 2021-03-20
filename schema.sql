@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS servertest1;
+DROP DATABASE IF EXISTS ;
 
-CREATE DATABASE servertest1;
-\c servertest1;
+CREATE DATABASE rrloadtest;
+\c rrloadtest;
 
 CREATE TABLE reviews
 (
@@ -34,7 +34,7 @@ CREATE TABLE characteristics
     id serial NOT NULL,
     product_id integer NOT NULL,
     name text NOT NULL,
-    PRIMARY KEY (id),
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE characteristicsreviews

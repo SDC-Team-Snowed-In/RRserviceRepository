@@ -2,6 +2,7 @@ const Koa = require('koa');
 const Router = require("koa-router");
 const cors = require('koa-cors');
 const bodyParser = require('koa-bodyparser');
+const compress = require('koa-compress');
 const controllers = require('./controllers');
 
 const server = new Koa();
@@ -12,6 +13,21 @@ server.use(cors());
 
 //  parse them bodies
 server.use(bodyParser({ enableTypes: ['json', 'text'] }));
+
+//  compress data being sent back to client
+// server.use(compress({
+//   filter (content_type) {
+//   	return /text/i.test(content_type)
+//   },
+//   threshold: 2048,
+//   gzip: {
+//     flush: require('zlib').constants.Z_SYNC_FLUSH
+//   },
+//   deflate: {
+//     flush: require('zlib').constants.Z_SYNC_FLUSH,
+//   },
+//   br: false // disable brotli
+// }));
 
 //  error-handling middleware
 server.use(async (context, next) => {

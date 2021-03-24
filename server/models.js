@@ -1,5 +1,6 @@
 const database = require('../database/db.js');
 
+//  once decoupled from database: axios request to database instance?
 exports.getReviews = async (params) => {
   const reviews = await database.getReviews(params);
   return reviews;

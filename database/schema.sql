@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS ;
 
-CREATE DATABASE rrloadtest;
-\c rrloadtest;
+CREATE DATABASE ratingsreviews;
+\c ratingsreviews;
 
 CREATE TABLE reviews
 (

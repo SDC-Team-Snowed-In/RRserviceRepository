@@ -12,9 +12,9 @@ const formatters = require('./queryHelpers');
 
 const pool = new Pool({
   host: 'localhost',
-  user: 'postgres',
+  user: 'superuser',
   password: `${config.password}`,
-  database: 'rrloadtest',
+  database: 'ratingsreviews',
   port: 5432
 });
 

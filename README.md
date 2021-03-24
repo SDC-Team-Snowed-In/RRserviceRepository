@@ -11,7 +11,6 @@ basic commands in postgres
 load schema from outside postgres
 psql postgres -f '/Users/nickpapadakis/Desktop/SDC/RRserviceRepository/schema.sql';
 
-
 SET session_replication_role = 'replica';
 
 SET session_replication_role = 'origin';

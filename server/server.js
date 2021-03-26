@@ -8,28 +8,9 @@ const controllers = require('./controllers');
 const server = new Koa();
 const router = new Router();
 
-//  handle the demon that is CORS
 server.use(cors());
-
-//  parse them bodies
 server.use(bodyParser({ enableTypes: ['json', 'text'] }));
 
-//  compress data being sent back to client
-// server.use(compress({
-//   filter (content_type) {
-//   	return /text/i.test(content_type)
-//   },
-//   threshold: 2048,
-//   gzip: {
-//     flush: require('zlib').constants.Z_SYNC_FLUSH
-//   },
-//   deflate: {
-//     flush: require('zlib').constants.Z_SYNC_FLUSH,
-//   },
-//   br: false // disable brotli
-// }));
-
-//  error-handling middleware
 server.use(async (context, next) => {
   try {
     await next();
@@ -40,7 +21,6 @@ server.use(async (context, next) => {
   }
 });
 
-// specify route(s)
 router
   .get('/reviews/:id/:count', controllers.reviews)
   .get('/meta/:id', controllers.meta)
@@ -48,9 +28,7 @@ router
   .put('/reviews/:id/helpful', controllers.helpful)
   .put('/reviews/:id/report', controllers.report);
 
-// mount the router to our web application
 server.use(router.routes());
 server.use(router.allowedMethods());
 
-// launch the server
 server.listen(3005);

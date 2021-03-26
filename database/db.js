@@ -11,8 +11,8 @@ const formatters = require('./queryHelpers');
 // }
 
 const pool = new Pool({
-  host: 'localhost',
-  user: 'superuser',
+  host: '54.176.204.187',
+  user: 'postgres',
   password: `${config.password}`,
   database: 'ratingsreviews',
   port: 5432
